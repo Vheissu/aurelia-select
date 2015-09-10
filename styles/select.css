@@ -1,0 +1,66 @@
+au-select {
+    display: inline-block;
+    width: 220px;
+}
+
+.select__select {
+    display: none;
+}
+
+.select__fauxSelect {
+    border: 1px solid #DEDEDE;
+    cursor: pointer;
+    padding: 15px;
+}
+
+    .select__fauxSelect__arrow {
+        display: block;
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+.select__list {
+    background: #FFF;
+    border-left: 1px solid #DEDEDE;
+    border-right: 1px solid #DEDEDE;
+    position: absolute;
+    transition: opacity 0.5s ease;
+    width: 100%;
+    z-index: 500;
+}
+
+.select__list__item {
+    border-bottom: 1px solid #DEDEDE;
+    padding: 8px;
+}
+
+.select__list__value {
+    display: block;
+    text-decoration: none;
+}
+
+.select__list--hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.select__list--visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+.select__list__search {
+
+}
+
+.select__list__search__input {
+    background: #FFF;
+    border: 1px solid #DEDEDE;
+    display: block;
+    margin: 8px;
+    padding: 10px;
+    width: calc(100% - 16px);
+}
