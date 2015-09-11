@@ -57,7 +57,7 @@ export class Select {
                 if (this.options.searchCaseSensitive) {
                     return obj.label.indexOf(value) >= 0;
                 } else {
-                    return obj.label.toLowerCase().indexOf(value) >= 0;
+                    return obj.label.search(new RegExp(value, 'i')) >= 0;
                 }
             });
         } else {
