@@ -10,7 +10,8 @@ export class Select {
     defaultOptions = {
         minimumResultsForSearch: 2,
         showSearch: true,
-        searchCaseSensitive: false
+        searchCaseSensitive: false,
+        width: 'element'
     };
 
     @bindable options = {};
@@ -35,6 +36,14 @@ export class Select {
                 this.showing = false;
             }
         });
+
+        if (this.options.width === 'element') {
+            this.realSelect.style.display = 'initial';
+            this.element.style.width = this.realSelect.offsetWidth + 'px';
+            this.realSelect.style.display = '';
+        } else {
+            this.element.style.width = this.options.width;
+        }
     }
 
     updateActiveItem(val) {
