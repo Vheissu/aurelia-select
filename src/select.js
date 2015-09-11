@@ -4,11 +4,16 @@ import {customElement, bindable, inject, bindingMode} from 'aurelia-framework';
 @customElement('au-select')
 export class Select {
     showing = false;
-    showSearch = true;
     filteredValues = [];
     currentItem = null;
 
-    @bindable options = null;
+    defaultOptions = {
+        showSearch: true,
+        searchCaseSensitive: false
+    };
+
+    @bindable options = {};
+
     @bindable values = [];
 
     constructor(element) {
@@ -18,11 +23,11 @@ export class Select {
     attached() {
         this.filteredValues = this.values;
 
-        this.values.forEach(obj => {
-            if (obj.selected) {
-                this.currentItem = obj;
+        for (let value of this.values) {
+            if (value.selected) {
+                this.currentItem = value;
             }
-        });
+        }
 
         document.addEventListener('click', e => {
             if (!this.element.contains(e.target)) {
@@ -48,6 +53,10 @@ export class Select {
         } else {
             this.filteredValues = this.values;
         }
+    }
+
+    optionsChanged(newVal) {
+        this.parseUserOptions();
     }
 
     valuesChanged(newVal) {
@@ -110,6 +119,25 @@ export class Select {
      */
     dispatchEvent(elem, event) {
         elem.dispatchEvent(event);
+    }
+
+    /**
+     * Parse User Options
+     * Handles parsing options provided by user or if none
+     * uses the default options instead, with selective merging
+     */
+    parseUserOptions() {
+        if (!this.options) {
+            Object.assign(this.options, this.defaultOptions);
+        } else {
+            try {
+                eval('this.options='+this.options+';');
+
+                Object.assign(this.options, Object.assign({}, this.defaultOptions, this.options));
+            } catch(e) {
+                console.error(e.message);
+            }
+        }
     }
 
 }
