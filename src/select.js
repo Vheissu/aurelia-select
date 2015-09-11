@@ -45,9 +45,6 @@ export class Select {
         } else {
             this.element.style.width = this.options.width;
         }
-    }
-
-    updateActiveItem(val) {
 
         this.showSearch = (this.values.length >= this.options.minimumResultsForSearch);
     }
