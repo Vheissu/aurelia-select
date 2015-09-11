@@ -55,9 +55,9 @@ export class Select {
         if (value.length && value.length >= this.options.minimumSearchCharacters) {
             this.filteredValues = this.values.filter(obj => {
                 if (this.options.searchCaseSensitive) {
-                    return obj.label.indexOf(value) >= 0;
+                    return obj.label.search(new RegExp(value)) >= 0;
                 } else {
-                    return obj.label.search(new RegExp(value, 'i')) >= 0;
+                    return obj.label.search(new RegExp(value, 'gi')) >= 0;
                 }
             });
         } else {
