@@ -4,12 +4,13 @@ import {customElement, bindable, inject, bindingMode} from 'aurelia-framework';
 @customElement('au-select')
 export class Select {
     showing = false;
+    showSearch = false;
     filteredValues = [];
     currentItem = null;
 
     defaultOptions = {
         minimumResultsForSearch: 2,
-        showSearch: true,
+        minimumResultsForSearch: Infinity,
         searchCaseSensitive: false,
         width: 'element'
     };
@@ -48,6 +49,7 @@ export class Select {
 
     updateActiveItem(val) {
 
+        this.showSearch = (this.values.length >= this.options.minimumResultsForSearch);
     }
 
     onSearchChange(evt) {

@@ -9,7 +9,7 @@
             <span class="select__fauxSelect__arrow">&#9660;</span>
         </div>
         <ul class="select__list ${showing == true ? 'select__list--visible' : 'select__list--hidden'}" ref="selectDropdown">
-            <li if.bind="options.showSearch" class="select__list__search"><input type="text" name="select-search" class="select__list__search__input" keyup.trigger="onSearchChange($event)" ref="selectSearch"></li>
+            <li if.bind="showSearch" class="select__list__search"><input type="text" name="select-search" class="select__list__search__input" keyup.trigger="onSearchChange($event)" ref="selectSearch"></li>
             <li class="select__list__item" repeat.for="item of filteredValues"><a href="javascript:void(0);" class="select__list__value" click.delegate="$parent.itemClicked($event, item)">${item.label}</a></li>
         </ul>
     </div>
