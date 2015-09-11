@@ -53,14 +53,13 @@ export class Select {
         let value = evt.target.value;
 
         if (value.length && value.length >= this.options.minimumSearchCharacters) {
+            this.filteredValues = this.values.filter(obj => {
                 if (this.options.searchCaseSensitive) {
                     return obj.label.indexOf(value) >= 0;
                 } else {
                     return obj.label.toLowerCase().indexOf(value) >= 0;
                 }
             });
-
-            this.filteredValues = filtered;
         } else {
             this.filteredValues = this.values;
         }
