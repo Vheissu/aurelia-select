@@ -8,6 +8,7 @@ export class Select {
     currentItem = null;
 
     defaultOptions = {
+        minimumResultsForSearch: 2,
         showSearch: true,
         searchCaseSensitive: false
     };
@@ -43,7 +44,7 @@ export class Select {
     onSearchChange(evt) {
         let value = evt.target.value;
 
-        if (value.length) {
+        if (value.length && value.length >= this.minimumResultsForSearch) {
             let filtered = this.values.filter(obj => {
                 if (this.options.searchCaseSensitive) {
                     return obj.label.indexOf(value) >= 0;
