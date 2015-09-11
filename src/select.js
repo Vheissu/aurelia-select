@@ -44,9 +44,12 @@ export class Select {
         let value = evt.target.value;
 
         if (value.length) {
-
             let filtered = this.values.filter(obj => {
-                return (obj.label.indexOf(value) >= 0);
+                if (this.options.searchCaseSensitive) {
+                    return obj.label.indexOf(value) >= 0;
+                } else {
+                    return obj.label.toLowerCase().indexOf(value) >= 0;
+                }
             });
 
             this.filteredValues = filtered;
