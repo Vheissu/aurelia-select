@@ -18,6 +18,8 @@ au-select {
         position: absolute;
         right: 10px;
         top: 50%;
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
         transform: translateY(-50%);
     }
 
@@ -25,10 +27,10 @@ au-select {
     background: #FFF;
     border-left: 1px solid #DEDEDE;
     border-right: 1px solid #DEDEDE;
+    overflow: hidden;
     position: absolute;
-    transition: opacity 0.5s ease;
     width: 100%;
-    z-index: 500;
+    z-index: 999;
 }
 
 .select__list__item {
@@ -42,15 +44,12 @@ au-select {
 }
 
 .select__list--hidden {
-    opacity: 0;
-    visibility: hidden;
+    height: 0;
 }
 
 .select__list--visible {
-    opacity: 1;
-    visibility: visible;
+    height: auto;
 }
-
 
 .select__list__search {
 
