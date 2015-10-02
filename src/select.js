@@ -14,6 +14,9 @@ export class Select {
         searchCaseSensitive: false,
         width: 'element'
     };
+    
+    @bindable name = '';
+    @bindable id = null;
 
     @bindable options = {};
 
