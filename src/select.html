@@ -1,7 +1,7 @@
 <template>
     <require from="styles/select.css"></require>
     <div class="select">
-        <select name="test" class="select__select" ref="realSelect" value.bind="currentItem.value">
+        <select name.bind="name" id.bind="id" class="select__select" ref="realSelect" value.bind="currentItem.value">
             <option repeat.for="item of values" value.bind="item.value">${item.label}</option>
         </select>
         <div class="select__fauxSelect" click.delegate="toggleDropdown()">
