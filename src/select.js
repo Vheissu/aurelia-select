@@ -1,4 +1,6 @@
-import {customElement, bindable, inject, bindingMode} from 'aurelia-framework';
+import {bindable, customElement} from 'aurelia-templating';
+import {bindingMode} from 'aurelia-binding';
+import {inject} from 'aurelia-dependency-injection';
 
 @inject(Element)
 @customElement('au-select')
